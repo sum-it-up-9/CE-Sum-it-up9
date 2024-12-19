@@ -227,8 +227,8 @@ const CustomForm = () => {
   useEffect(() => {
     const params = new URL(document.location).searchParams;
     const cartId = params.get("cartId");
-    console.log("check if cartId available", cartId);
-    console.log("params", params);
+    //console.log("check if cartId available", cartId);
+    //console.log("params", params);
     if (initialwhoPaysShippping) {
       if (
         cartTotal < 1000 &&
@@ -1205,7 +1205,7 @@ const CustomForm = () => {
 
       // If fetchCustomer returns "stopProcessing", halt further operations
       if (customerFetchResult === "stopProcessing") {
-        console.log("Processing stopped due to customer group BindGrp.");
+        console.log("Processing stopped.");
         return;
       }
 
