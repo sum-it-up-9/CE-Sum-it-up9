@@ -174,7 +174,7 @@ let prevMetafieldsPayload;
 let shouldRender = true;
 let whoPaysShippingGlobal = "Customer Pays Freight";
 let selectedShipperGlobal = "FedEx";
-let sellarsShipperGlobal = "Prepaid LTL";
+// let sellarsShipperGlobal = "Prepaid LTL";
 let customerFetchResult;
 
 let customerPreferredObjGlobal = {
@@ -224,24 +224,24 @@ const CustomForm = () => {
     "Customer Pays Freight"
   );
 
-  useEffect(() => {
-    const params = new URL(document.location).searchParams;
-    const cartId = params.get("cartId");
-    //console.log("check if cartId available", cartId);
-    //console.log("params", params);
-    if (initialwhoPaysShippping) {
-      if (
-        cartTotal < 1000 &&
-        initialwhoPaysShippping === "Sellars Pays Freight"
-      ) {
-        aa = 4;
-        //do nothing
-      } else {
-        setWhoPaysShipping(initialwhoPaysShippping);
-        whoPaysShippingGlobal = initialwhoPaysShippping;
-      }
-    }
-  }, [initialwhoPaysShippping]);
+  // useEffect(() => {
+  //   const params = new URL(document.location).searchParams;
+  //   const cartId = params.get("cartId");
+  //   //console.log("check if cartId available", cartId);
+  //   //console.log("params", params);
+  //   if (initialwhoPaysShippping) {
+  //     if (
+  //       cartTotal < 1000 &&
+  //       initialwhoPaysShippping === "Sellars Pays Freight"
+  //     ) {
+  //       aa = 4;
+  //       //do nothing
+  //     } else {
+  //       setWhoPaysShipping(initialwhoPaysShippping);
+  //       whoPaysShippingGlobal = initialwhoPaysShippping;
+  //     }
+  //   }
+  // }, [initialwhoPaysShippping]);
 
   // const initialuseFedExAccount = metafields?.useFedExAccount;
   const initialAccountNumber = metafields?.AccountNumber;
@@ -266,7 +266,7 @@ const CustomForm = () => {
 
   const initialShipper = metafields?.shipper;
   const [selectedShipper, setSelectedShipper] = useState("FedEx");
-  const [sellarsShipper, setSellarsShipper] = useState("Prepaid LTL");
+  // const [sellarsShipper, setSellarsShipper] = useState("Prepaid LTL");
 
   function formDataUpdate(initialwhoPaysShippping, initialShipper) {
     if (initialwhoPaysShippping === "Sellars Pays Freight") {
@@ -311,8 +311,8 @@ const CustomForm = () => {
     if (!initialShipper) return;
 
     if (initialwhoPaysShippping === "Sellars Pays Freight") {
-      setSellarsShipper(initialShipper);
-      sellarsShipperGlobal = initialShipper;
+      // setSellarsShipper(initialShipper);
+      // sellarsShipperGlobal = initialShipper;
     } else {
       setSelectedShipper(initialShipper);
       selectedShipperGlobal = initialShipper;
@@ -452,11 +452,11 @@ const CustomForm = () => {
     sendMessage();
   };
 
-  const handleSellersShipperChange = (e) => {
-    sendMessage();
-    setSellarsShipper(e.target.value);
-    selectedShipperGlobal = e.target.value;
-  };
+  // const handleSellersShipperChange = (e) => {
+  //   sendMessage();
+  //   setSellarsShipper(e.target.value);
+  //   selectedShipperGlobal = e.target.value;
+  // };
 
   function handleWillCallChange(e) {
     setWillCallObj((prev) => {
@@ -863,7 +863,7 @@ const CustomForm = () => {
     if (whoPaysShippping === "Sellars Pays Freight") {
       payload = {
         whoPaysShippping,
-        shipper: sellarsShipper,
+        shipper: sellarsShipper || undefined,
         specialInstructions,
       };
     } else if (whoPaysShippping === "Customer Pays Freight") {
@@ -1079,24 +1079,24 @@ const CustomForm = () => {
       //parentOrigin: https://sellarspro.com
       //parentOrigin: https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com/
 
-      if (referrer !== parentOrigin) {
-        shouldRender = true;
-        setflagForRender(true);
-        //alert("Access Denied");
-        return;
-      }
-      // //https://sellarspro.com
-      if (
-        referrer !==
-          "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com" ||
-        parentOrigin !==
-          "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com"
-      ) {
-        shouldRender = true;
-        setflagForRender(true);
-        //alert("Access Denied");
-        return;
-      }
+      // if (referrer !== parentOrigin) {
+      //   shouldRender = true;
+      //   setflagForRender(true);
+      //   //alert("Access Denied");
+      //   return;
+      // }
+      // // //https://sellarspro.com
+      // if (
+      //   referrer !==
+      //     "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com" ||
+      //   parentOrigin !==
+      //     "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com"
+      // ) {
+      //   shouldRender = true;
+      //   setflagForRender(true);
+      //   //alert("Access Denied");
+      //   return;
+      // }
 
       async function fetchData() {
         let myHeaders2 = new Headers();
@@ -1299,19 +1299,19 @@ const CustomForm = () => {
                   onChange={handleShippingChange}
                   data-testid="whoPaysShipping"
                 >
-                  {cartTotal > 1000 && (
+                {/*  {cartTotal > 1000 && (
                     <MenuItem value="Sellars Pays Freight">
                       Sellars Pays Freight
                     </MenuItem>
                   )}
-
+                  */}
                   <MenuItem value="Customer Pays Freight">
                     Customer Pays Freight
                   </MenuItem>
                 </Select>
               </div>
 
-              {whoPaysShippping === "Sellars Pays Freight" &&
+              {/* {whoPaysShippping === "Sellars Pays Freight" &&
               cartTotal > 1000 ? (
                 <div>
                   <div style={{ marginBottom: "5px" }}>Shipper To Use</div>
@@ -1327,7 +1327,7 @@ const CustomForm = () => {
                   </Select>
                 </div>
               ) : (
-                <>
+                <> */}
                   <div>
                     <div style={{ marginBottom: "5px" }}>Shipper To Use</div>
 
@@ -1439,8 +1439,8 @@ const CustomForm = () => {
                       )}
                     </Grid>
                   </div>
-                </>
-              )}
+                {/* </>
+              )} */}
 
               <div>
                 <div style={{ marginTop: "10px" }}>
