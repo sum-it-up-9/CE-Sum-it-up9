@@ -1054,6 +1054,7 @@ const CustomForm = () => {
         // Return a message to indicate checkout can proceed normally
         //if not bindgrp do not render empty fragment
         shouldRender=false;
+        console.log('shouldRender',shouldRender);
         return "proceedWithCheckout";
       }
     } catch (error) {
