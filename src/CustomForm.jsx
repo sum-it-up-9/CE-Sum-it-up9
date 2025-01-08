@@ -833,7 +833,7 @@ const CustomForm = () => {
       //https://sam-bc-sandbox.azurewebsites.net/api/updateproductprices
       //https://sam-bcapps-prod.azurewebsites.net/api/updateproductprices
       const res = await fetch(
-        `https://sam-bc-sandbox.azurewebsites.net/api/updateproductprices`,
+        `http://localhost:7071/api/addShippingMetafield`,
         {
           method: "POST",
           headers: myHeaders,
@@ -1024,7 +1024,7 @@ const CustomForm = () => {
     myHeaders2.append("Access-Control-Allow-Origin", "*");
     try {
       const response = await fetch(
-        `http://localhost:3000/getCart`,
+        `http://localhost:7071/api/getCart`,
         {
           method: "POST",
           headers: myHeaders2,
