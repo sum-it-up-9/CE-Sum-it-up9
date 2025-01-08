@@ -1208,7 +1208,7 @@ const CustomForm = () => {
         console.log("Processing stopped.");
         return;
       }
-
+      console.log('here continue process');
       // Update ProductPrices with prevPayload if available
       // if (prevMetafieldsPayload) {
       //   updatePrice(prevMetafieldsPayload);
