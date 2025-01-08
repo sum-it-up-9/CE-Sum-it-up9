@@ -1210,10 +1210,10 @@ const CustomForm = () => {
       }
 
       // Update ProductPrices with prevPayload if available
-      if (prevMetafieldsPayload) {
-        updatePrice(prevMetafieldsPayload);
-      }
-      await fetchCartTotal()
+      // if (prevMetafieldsPayload) {
+      //   updatePrice(prevMetafieldsPayload);
+      // }
+      //await fetchCartTotal()
       setFlag((prev) => !prev);
 
 
