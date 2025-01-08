@@ -1079,24 +1079,24 @@ const CustomForm = () => {
       //parentOrigin: https://sellarspro.com
       //parentOrigin: https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com/
 
-      // if (referrer !== parentOrigin) {
-      //   shouldRender = true;
-      //   setflagForRender(true);
-      //   //alert("Access Denied");
-      //   return;
-      // }
-      // // //https://sellarspro.com
-      // if (
-      //   referrer !==
-      //     "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com" ||
-      //   parentOrigin !==
-      //     "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com"
-      // ) {
-      //   shouldRender = true;
-      //   setflagForRender(true);
-      //   //alert("Access Denied");
-      //   return;
-      // }
+      if (referrer !== parentOrigin) {
+        shouldRender = true;
+        setflagForRender(true);
+        //alert("Access Denied");
+        return;
+      }
+      // //https://sellarspro.com
+      if (
+        referrer !==
+          "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com" ||
+        parentOrigin !==
+          "https://sellars-absorbent-materials-sandbox-1.mybigcommerce.com"
+      ) {
+        shouldRender = true;
+        setflagForRender(true);
+        //alert("Access Denied");
+        return;
+      }
 
       async function fetchData() {
         let myHeaders2 = new Headers();
